@@ -15,6 +15,9 @@ body {
     display:flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap:20px;
+    
     
     
 }
@@ -25,16 +28,18 @@ body {
     text-decoration: none;
   }
 
-  img{
-    width:200px;
-    height:200px;
-  }
+  /* img{
+    width:500px;
+    height:500px;
+  } */
 
   .memory-game{
-    width:1000px;
-    height:1000px;
+    width:800px;
+    height:1400px;
     display:flex;
     flex-wrap:wrap;
+    perspective: 1000px;
+   
 
     
   }
@@ -43,10 +48,13 @@ body {
   .memory-card{
    
     width: calc(25% - 10px);
-    height: calc(33.333% - 10px);
+    height: calc(16.666% - 10px);
     position:relative;
     margin:5px;
-    transform:scale(1)
+    transform:scale(1);
+    transform-style:preserve-3d;
+    transition:transform .5s;
+   
 
   }
   
@@ -60,14 +68,66 @@ body {
   .front-face,
   .back-face {
     position:absolute;
-    width:100%;
-    height:100%;
-    border: 2px solid black;
-    
+    width:90%;
+    height:90%;
+    border: 2px solid #800000;
+    backface-visibility:hidden;
+    border-radius: 30px;
    
   }
 
   .memory-card.flip{
     transform:rotateY(180deg)
+
+  }
+
+  .front-face {
+    transform:rotateY(180deg);
+  }
+
+  
+
+
+
+h1 {
+    background: linear-gradient(-45deg, #CC232A, #F5AC27, #F2888B,#A3262A,#CC9902,#FFD84B);
+    background-size: 300%;
+    font-size: 50px;
+    padding-top: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animated_text 15s ease-in-out infinite;
+    -moz-animation: animated_text 15s ease-in-out infinite;
+    -webkit-animation: animated_text 15s ease-in-out infinite;
+    
+  
+
+    
+  }
+  
+  @keyframes animated_text {
+    0% { background-position: 0px 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0px 50%; }
+  }
+
+ 
+
+  .credits{
+    display:flex;
+    flex-direction: row;
+    gap:60px;
+
+  
+  }
+
+  a {
+    padding-bottom: 3%;
+    color: #F7E7CE;
+    text-decoration: none;
+    opacity: 0.2;
+    
 
   }
